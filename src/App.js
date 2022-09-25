@@ -1,25 +1,21 @@
-import logo from './logo.svg';
+import React from 'react';
+import { Button } from 'antd';
 import './App.css';
+import { CaretRightOutlined } from '@ant-design/icons'
+const App = () => (
+  <div className="App">
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  <p>Ban Muon Lam Gi?</p><br />
+    <Button type="primary" shape="round" size="large" onClick="activeXemThanSoHoc()"><CaretRightOutlined />Xem Than So Hoc</Button> <br /><br />
+
+    <Button type="danger" href="https://www.google.com" shape="round" size="large"><CaretRightOutlined />Xem Menh Khuyet</Button> <br /><br />
+
+    <Button type="dased" shape="round" size="large" onClick="activeXemLaSoTuVi()"><CaretRightOutlined />Xem La So Tu Vi</Button> <br /><br />
+
+
+  </div>
+);
+
+
 
 export default App;
