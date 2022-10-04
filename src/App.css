@@ -18,6 +18,8 @@
     rgba(253, 187, 45, 1) 100%
   );
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#22c1c3",endColorstr="#fdbb2d",GradientType=1);
+  padding: 20;
+  margin: 20;
 }
 
 .center-screen {
@@ -26,4 +28,8 @@
   align-items: center;
   text-align: center;
   min-height: 100vh;
+}
+
+.results {
+
 }
