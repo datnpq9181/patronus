@@ -157,26 +157,24 @@ function App() {
             </Select>
           </div>
 
-          <div className="results">
-            <Button
-              type="primary"
-              shape="round"
-              size="large"
-              onClick={processThanSo}
-            >
-              <CheckCircleTwoTone twoToneColor="#52c41a" />
-              Xem Thần Số Học
-            </Button>
-            <Button type="dashed" shape="round" size="large">
-              <HeartTwoTone twoToneColor="#eb2f96" />
-              Xem Mệnh Khuyết
-            </Button>
+          <Button
+            type="primary"
+            shape="round"
+            size="large"
+            onClick={processThanSo}
+          >
+            <CheckCircleTwoTone twoToneColor="#52c41a" />
+            Xem Thần Số Học
+          </Button>
+          <Button type="dashed" shape="round" size="large">
+            <HeartTwoTone twoToneColor="#eb2f96" />
+            Xem Mệnh Khuyết
+          </Button>
 
-            <Button type="dashed" shape="round" size="large">
-              <SmileTwoTone />
-              Xem Lá Số Tử Vi
-            </Button>
-          </div>
+          <Button type="dashed" shape="round" size="large">
+            <SmileTwoTone />
+            Xem Lá Số Tử Vi
+          </Button>
         </Space>
       </div>
     </div>
