@@ -15,6 +15,7 @@ function App() {
   const [month, setMonth] = useState();
   const [year, setYear] = useState();
   const [hour, setHour] = useState();
+  const [numerology, setNumerology] = useState();
 
   const handleDayChange = (value) => {
     console.log(value);
@@ -36,6 +37,11 @@ function App() {
     setHour(value);
   };
 
+  const handleNumerologyChange = (value) => {
+    console.log(value);
+    setNumerology(value);
+   }
+
   function getFinalValue(val) {
     //Process num to final sum
     const processValStr = Array.from(String(val));
@@ -50,9 +56,11 @@ function App() {
     return sumVal;
   }
 
-  function checkRes(val) {
-    if (val > 11 || val === 22 || val === 33) return false;
+  function checkSpecialCase(val) {
+    //finalSum is 11 or 22 or 33
+    if (val === 11 || val === 22 || val === 33) return false;
   }
+
   const processThanSo = (value) => {
     //Button to active to process Than So
     console.log("Processing ...");
@@ -61,10 +69,15 @@ function App() {
     var resYear = getFinalValue(year);
     var finalSum = resDay + resMonth + resYear;
 
-    if (checkRes(finalSum) === false) {
-      finalSum = getFinalValue(finalSum);
+    if (checkSpecialCase(finalSum) === false) {
+      console.log("Special Result", finalSum);
+    } else {
+      do {
+        finalSum = getFinalValue(finalSum);
+      } while (finalSum > 11);
     }
-    console.log("Result: ",finalSum);
+    console.log("Normal Result: ", finalSum);
+    return finalSum;
   };
 
   return (
@@ -73,9 +86,9 @@ function App() {
         <Space direction="vertical" align="center" wrap={true} size="large">
           <h1>Patronus Internal</h1>
           <h2>
-            Sinh ngày {day} tháng {month} năm {year} lúc {hour}
+            Sinh ngày {day} tháng {month} năm {year}
           </h2>
-
+          <h3>Thần số học của bạn là: {}</h3>
           <div className="select-day">
             <Select
               id="day"
