@@ -36,8 +36,35 @@ function App() {
     setHour(value);
   };
 
-  const processThanSo = (value) => {
+  function getFinalValue(val) {
+    //Process num to final sum
+    const processValStr = Array.from(String(val));
+    const processValNum = [];
+    let sumVal = 0;
 
+    for (var i = 0; i < processValStr.length; i++) {
+      let temp = parseInt(processValStr[i], 10);
+      processValNum.push(temp);
+      sumVal += temp;
+    }
+    return sumVal;
+  }
+
+  function checkRes(val) {
+    if (val > 11 || val === 22 || val === 33) return false;
+  }
+  const processThanSo = (value) => {
+    //Button to active to process Than So
+    console.log("Processing ...");
+    var resDay = getFinalValue(day);
+    var resMonth = getFinalValue(month);
+    var resYear = getFinalValue(year);
+    var finalSum = resDay + resMonth + resYear;
+
+    if (checkRes(finalSum) === false) {
+      finalSum = getFinalValue(finalSum);
+    }
+    console.log("Result: ",finalSum);
   };
 
   return (
@@ -48,6 +75,7 @@ function App() {
           <h2>
             Sinh ngày {day} tháng {month} năm {year} lúc {hour}
           </h2>
+
           <div className="select-day">
             <Select
               id="day"
