@@ -15,7 +15,7 @@ function App() {
   const [month, setMonth] = useState();
   const [year, setYear] = useState();
   const [hour, setHour] = useState();
-  const [numerology, setNumerology] = useState();
+  const [numerous, setNumerous] = useState();
 
   const handleDayChange = (value) => {
     console.log(value);
@@ -37,11 +37,6 @@ function App() {
     setHour(value);
   };
 
-  const handleNumerologyChange = (value) => {
-    console.log(value);
-    setNumerology(value);
-   }
-
   function getFinalValue(val) {
     //Process num to final sum
     const processValStr = Array.from(String(val));
@@ -56,28 +51,22 @@ function App() {
     return sumVal;
   }
 
-  function checkSpecialCase(val) {
-    //finalSum is 11 or 22 or 33
-    if (val === 11 || val === 22 || val === 33) return false;
+  function checkRes(val) {
+    if (val > 11 || val === 22 || val === 33) return false;
   }
-
-  const processThanSo = (value) => {
+  const processNumerous = (value) => {
     //Button to active to process Than So
     console.log("Processing ...");
     var resDay = getFinalValue(day);
     var resMonth = getFinalValue(month);
     var resYear = getFinalValue(year);
-    var finalSum = resDay + resMonth + resYear;
+    var numerous = resDay + resMonth + resYear;
 
-    if (checkSpecialCase(finalSum) === false) {
-      console.log("Special Result", finalSum);
-    } else {
-      do {
-        finalSum = getFinalValue(finalSum);
-      } while (finalSum > 11);
+    if (checkRes(numerous) === false) {
+      numerous = getFinalValue(numerous);
     }
-    console.log("Normal Result: ", finalSum);
-    return finalSum;
+    console.log("Result: ", numerous);
+    setNumerous(numerous);
   };
 
   return (
@@ -86,9 +75,10 @@ function App() {
         <Space direction="vertical" align="center" wrap={true} size="large">
           <h1>Patronus Internal</h1>
           <h2>
-            Sinh ngày {day} tháng {month} năm {year}
+            Sinh ngày {day} tháng {month} năm {year} vào giờ {hour}
           </h2>
-          <h3>Thần số học của bạn là: {}</h3>
+          <h3> Số chủ đạo của bạn là: {numerous}</h3>
+
           <div className="select-day">
             <Select
               id="day"
@@ -202,7 +192,7 @@ function App() {
             type="primary"
             shape="round"
             size="large"
-            onClick={processThanSo}
+            onClick={processNumerous}
           >
             <CheckCircleTwoTone twoToneColor="#52c41a" />
             Xem Thần Số Học
