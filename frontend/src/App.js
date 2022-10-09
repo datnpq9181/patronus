@@ -16,6 +16,7 @@ function App() {
   const [year, setYear] = useState();
   const [hour, setHour] = useState();
   const [numerous, setNumerous] = useState();
+  const [age, setAge] = useState();
 
   const handleDayChange = (value) => {
     console.log(value);
@@ -37,6 +38,12 @@ function App() {
     setHour(value);
   };
 
+  const calculateAge = (value) => {
+    value = 36 - value;
+    setAge(value);
+    return value;
+  };
+
   function getFinalValue(val) {
     //Process num to final sum
     const processValStr = Array.from(String(val));
@@ -52,9 +59,9 @@ function App() {
   }
 
   function checkRes(val) {
-    if (val > 11 || val === 22 || val === 33) return false;
+    if (val > 11 || val === 22) return false;
   }
-  const processNumerous = (value) => {
+  const processNumerous = () => {
     //Button to active to process Than So
     console.log("Processing ...");
     var resDay = getFinalValue(day);
@@ -67,6 +74,7 @@ function App() {
     }
     console.log("Result: ", numerous);
     setNumerous(numerous);
+    calculateAge(numerous);
   };
 
   return (
@@ -74,10 +82,14 @@ function App() {
       <div class="center-screen">
         <Space direction="vertical" align="center" wrap={true} size="large">
           <h1>Patronus Internal</h1>
+
           <h2>
             Sinh ngày {day} tháng {month} năm {year} vào giờ {hour}
           </h2>
-          <h3> Số chủ đạo của bạn là: {numerous}</h3>
+          <h2> Số chủ đạo của bạn là: {numerous}</h2>
+          <h2>
+            Các năm tuổi đáng chú ý: {age}, {age + 9}, {age + 18}, {age + 27}
+          </h2>
 
           <div className="select-day">
             <Select
@@ -185,6 +197,9 @@ function App() {
               <Option value="10">Dậu (17h-19h)</Option>
               <Option value="11">Tuất (19h-21h)</Option>
               <Option value="12">Hợi (21h-23h)</Option>
+              <Option value="null">
+                <i>Không nhớ rõ</i>
+              </Option>
             </Select>
           </div>
 
